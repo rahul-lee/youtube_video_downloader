@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Youtube Video Downloader</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .form-box {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 500px;
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="form-box">
+        <h1>Youtube Video Downloader</h1>
+        <form action="" method="post">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="link">Enter URL:</label>
+                <input type="text" class="form-control" id="link" name="link" placeholder="Paste the Youtube link here" required>
+            </div>
+            <button type="submit" class="btn btn-success btn-block">Submit</button>
+        </form>
+
+        {% if error_message %}
+            <div class="alert alert-danger mt-3">{{ error_message }}</div>  <!-- Display error message -->
+        {% endif %}
+
+        {% if success_message %}
+            <div class="alert alert-success mt-3">{{ success_message }}</div>  <!-- Display success message -->
+        {% endif %}
+    </div>
+</div>
+
+<!-- Bootstrap JS and dependencies -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
